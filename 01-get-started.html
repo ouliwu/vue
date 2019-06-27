@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>01-get-started</title>
+</head>
+<body>
+  <!-- M-V-VM里 V : view 用于显示 -->
+<div id="root">
+  {{msg}}
+</div>
+<script src="./vue.js"></script>
+<script>
+  // M-V-VM里的 VM: ViewModel,用于连接model和view
+  const app = new Vue({
+    el: "#root",
+    // M-V-VM里的 M: model,用于定义和管理数据
+    data: {
+      msg: 'Hello 1901' // 可以通过任何地方去获取或者修改这个数据， app.$data.msg， 简写为app.msg
+    }
+  })
+</script>
+</body>
+</html>

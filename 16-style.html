@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .a {
+      width: 200px;
+      height: 100px;
+      background-color: #F00;
+    }
+    .b {
+      background-color: #FF0;
+    }
+
+    .status {
+      display: inline-block;
+      width: 60px;
+      height: 20px;
+      background-color: #080;
+      font-size: 12px;
+      text-align: center;
+      border-radius: 10px;
+      line-height: 20px;
+      color: #FFF;
+    }
+    .un-completed {
+      background-color: #F00;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div :class="{a: true, b: false}"></div>
+    <div :class="{a: true, b: true}"></div>
+
+    <ul>
+      <li v-for="item in list">
+        <span style=>{{item.title}}</span>
+        <span
+          :class="{status: true, 'un-completed': !item.isCompleted}"
+        >{{item.isCompleted ? '完成' : '未完成'}}</span>
+      </li>
+    </ul>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    new Vue({
+      el: '#root',
+      data: {
+        list: [{
+          id: 1,
+          title: 'eating',
+          isCompleted: true
+        }, {
+          id: 2,
+          title: 'coding',
+          isCompleted: false
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>

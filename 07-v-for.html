@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>07-v-for</title>
+</head>
+
+<body>
+  <div id="root">
+    <div>{{msg}}</div>
+    <ul>
+      <!-- v-for用于循环渲染数据 -->
+      <li v-for="item in list">
+        <span>{{item.id}}</span>.<span>{{item.title}}</span>
+      </li>
+    </ul>
+      <!-- v-for还可以遍历对象 -->
+    <ul>
+      <li v-for="(value, index) in leo">
+        {{index}}: {{value}}
+      </li>
+    </ul>
+    <!-- 也可以遍历数字 -->
+    <ul>
+      <li v-for="n of 100">{{n}}</li>
+    </ul>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#root",
+      data: {
+        msg: 'Hello 1901',
+        leo: {
+          name: 'leo',
+          age: 35,
+          favor: '写代码,吹牛,吃'
+        },
+        list: [{
+          id: 1,
+          title: '打豆豆'
+        }, {
+          id: 2,
+          title: '写程序'
+        }, {
+          id: 3,
+          title: '吃饭'
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>

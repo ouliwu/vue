@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>01-get-started</title>
+</head>
+<body>
+<div id="root">
+  <!-- vue的指令都是 v-指令 这种格式，一旦使用了指令，虽然我们写的值看起来是字符串，因为我们使用"值"，但这个值已经是javascript了，所以下面的代码实际上会报错 -->
+  <!-- <div v-text="实际上这里已经是javascript,而不是普通的字符">{{msg}}</div> -->
+  <!-- v-text可以用于替换插值表达式，如果有v-text，那么插值不起使用 -->
+  <div v-text="'这里v-text的内容'">{{msg}}</div>
+  <div v-text="msg"></div>
+  <!-- 如果是富文本编辑器的内容，直接渲染的话，是被转义过的，那么html标签就会直接被渲染到页面 -->
+  <div>{{content}}</div>
+  <!-- 如果要输出正确的不带html标签转义的内容，就需要使用v-html指令 -->
+  <div v-html="content"></div>
+</div>
+<script src="./vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#root",
+    data: {
+      msg: 'Hello 1901',
+      content: '<p>这是后台<b>富文本编辑器</b>生成的<span style="font-size: 18px;">内容</span></p>'
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>simple todolist</title>
+  <link href="https://cdn.bootcss.com/bulma/0.7.4/css/bulma.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="root">
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            待办事项列表
+          </h1>
+          <h2 class="subtitle">
+            完成今天的事情，明天就可以做更多事情。老板的任务是做不完的。提高效率没有用
+          </h2>
+        </div>
+      </div>
+    </section>
+    <section class="hero">
+      <div class="container">
+
+        <div class="field has-addons">
+          <div class="control">
+            <input
+              @keyup.enter="addTodo"
+              v-model="inputValue"
+              class="input"
+              type="text"
+              placeholder="请输入待办事项"
+            >
+          </div>
+          <div class="control">
+            <a @click="addTodo" class="button is-info">
+              添加
+            </a>
+          </div>
+          
+        </div>
+
+        <div class="columns is-multiline is-mobile">
+
+          <div
+            class="column is-one-quarter"
+            v-for="todo in todos"
+            :key="todo.id"
+          >
+            <div class="card">
+              <div class="card-content">
+                <div class="content">
+                  {{todo.title}}
+                </div>
+              </div>
+              <footer class="card-footer">
+                <span
+                  :class="{
+                    'card-footer-item': true,
+                    'has-text-primary': todo.hasCompleted,
+                    'has-text-danger': !todo.hasCompleted
+                  }"
+                >
+                  {{ todo.hasCompleted ? '已完成' : '未完成'}}
+                </span>
+                <span
+                  class="card-footer-item"
+                  @click="toggleCompleted(todo.id)"
+                >
+                  标记为{{ todo.hasCompleted ? '未' : '已'}}完成
+                </span>
+              </footer>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    new Vue({
+      el: '#root',
+      data: {
+        inputValue: '',
+        todos: [{
+          id: 1,
+          title: '吃饭',
+          hasCompleted: true
+        }, {
+          id: 2,
+          title: '再吃一次饭',
+          hasCompleted: false
+        }]
+      },
+      methods: {
+        addTodo () {
+          this.todos.push({
+            id: Math.random(),
+            title: this.inputValue,
+            hasCompleted: false
+          })
+          this.inputValue = ''
+        },
+        toggleCompleted (id) {
+          this.todos = this.todos.map(todo => {
+            if (todo.id === id) {
+              todo.hasCompleted = !todo.hasCompleted
+            }
+            return todo
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

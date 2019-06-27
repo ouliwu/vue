@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object.defineProperty</title>
+</head>
+<body>
+<div id="root">
+  <span id="count"></span><button onclick="increaseCount()">+</button>
+</div>
+<script>
+  // 事先定义了一个对象
+  const obj = {}
+  // 定义一个中间值，用于过渡
+  let v = 20
+  // 使用Object.defineProperty来为obj定义一个x的值
+  Object.defineProperty(obj, 'x', {
+    // 当每次调用 obj.x 这个get方法会自动执行，它的return值就是上面定义的v
+    get () {
+      return v
+    },
+    // 当每次使用 obj.x = 某个值  来赋值的时候  这个set方法会自动执行，set方法的参数就是你的那个·某个值·
+    set (newValue) {
+      // 把新值赋给v, 那么下次在执行obj.x取出来的就是新值
+      v = newValue
+      // 每次有值过来的时候，咱们就重新渲染一下dom
+      setCountDomText()
+    }
+  })
+  // 只是按钮的点击事件，用于赋值而已
+  const increaseCount = () => {
+    obj.x = obj.x + 1
+  } 
+  // 这是用来渲染数据到页面上的
+  const setCountDomText = () => {
+    document.querySelector('#count').innerHTML = obj.x
+  }
+  // 初次渲染
+  setCountDomText()
+</script>
+</body>
+</html>

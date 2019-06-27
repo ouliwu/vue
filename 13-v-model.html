@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>12-input</title>
+</head>
+
+<body>
+  <div id="root">
+    <input type="text" v-model="inputValue" />
+    <p>您输入的内容是：{{inputValue}}</p>
+
+    <input type="checkbox" v-model="hobi" value="打球">打球
+    <input type="checkbox" v-model="hobi" value="被球打">被球打
+    <input type="checkbox" v-model="hobi" value="被球员打">被球员打
+
+    <p>你的爱好是：{{hobi}}</p>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#root",
+      data: {
+        inputValue: '',
+        hobi: ['打球']
+      }
+    })
+  </script>
+</body>
+
+</html>

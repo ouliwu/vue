@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>11-v-bind</title>
+</head>
+
+<body>
+  <div id="root">
+    <ul>
+      <!-- v-bind:属性 用于动态绑定元素的属性 -->
+      <li v-for="item in list" v-bind:key="item.id">
+        <!-- v-bind:属性可以直接简写为:属性 -->
+        <span>{{item.id}}</span>.<span :title="item.title">{{item.title}}</span>
+      </li>
+    </ul>
+    
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#root",
+      data: {
+        msg: 'Hello 1901',
+        list: [{
+          id: 1,
+          title: '打豆豆'
+        }, {
+          id: 2,
+          title: '写程序'
+        }, {
+          id: 3,
+          title: '吃饭'
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>08-v-if</title>
+</head>
+
+<body>
+  <div id="root">
+    <div>{{msg}}</div>
+    <ul>
+      <li v-for="item in list">
+        <span>{{item.id}}</span>
+        <span>{{item.title}}</span>
+        <span>{{item.isCompleted ? '已完成' : '未完成'}}</span>
+        <span v-if="item.isCompleted === true" style="color: #090">已完成</span>
+        <i v-else style="color: #F00">未完成</i>
+      </li>
+    </ul>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#root",
+      data: {
+        msg: 'Hello 1901',
+        list: [{
+          id: 1,
+          title: '打豆豆',
+          isCompleted: true
+        }, {
+          id: 2,
+          title: '写程序',
+          isCompleted: false
+        }, {
+          id: 3,
+          title: '吃饭',
+          isCompleted: false
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>

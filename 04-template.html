@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>01-get-started</title>
+</head>
+<body>
+<div id="root">
+  <!-- {{这里必须是一个表达式}} -->
+  {{msg}} <br>
+  {{ 1 + 1 }} <br>
+  {{ 1 + 1 === 2 && '这个算得真不错！' }} <br>
+  {{ 1 + 1 !== 2 && '这个算得真不错！' }} <br>
+  {{ 1 + 1 === 2 ? "正确的" : "错误的" }} <br>
+  {{ 1 + 1 !== 2 ? "正确的" : "错误的" }}
+</div>
+<script src="./vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#root",
+    data: {
+      msg: 'Hello 1901'
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>09-v-if-v-show</title>
+</head>
+
+<body>
+  <div id="root">
+    <!-- v-if是直接从dom节点里把该节点移除或者插入 -->
+    <div v-if="isModalShow === true">这是一个弹窗</div>
+    <!-- v-show是通过改变style.display来确定该节点是否显示，这种是CSS的显示和隐藏的操作，对于需要频繁切换显示和隐藏的节点，特别实用，比如：弹窗，手机注册和邮箱注册的两个tab的切换 -->
+    <div v-show="isModalShow === true">这是另一个弹窗</div>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#root",
+      data: {
+        isModalShow: true
+      }
+    })
+  </script>
+</body>
+
+</html>

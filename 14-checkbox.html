@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>14-checkbox</title>
+</head>
+
+<body>
+  <div id="root">
+    <input type="checkbox" :checked="hobi.includes('打球')" @change="onCheckboxChange" value="打球">打球
+    <input type="checkbox" :checked="hobi.includes('被球打')" @change="onCheckboxChange" value="被球打">被球打
+    <input type="checkbox" :checked="hobi.includes('被球员打')" @change="onCheckboxChange" value="被球员打">被球员打
+
+    <p>你的爱好是：{{hobi}}</p>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#root",
+      data: {
+        hobi: ['打球']
+      },
+      methods: {
+        onCheckboxChange (e) {
+          const v = e.target.value
+          if (this.hobi.includes(v)) {
+            this.hobi = this.hobi.filter((item) => {
+              return item !== v
+            })
+          } else {
+            this.hobi.push(v)
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
